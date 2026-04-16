@@ -89,18 +89,18 @@
     <div class="city">Search City</div>
 
     <form method="POST">
-        <input type="text" name="api_key" placeholder="OpenWeatherMap API key" value="{{ api_key }}">
-        <input type="text" name="city" placeholder="Enter city" value="{{ city }}">
+        <input type="text" name="city" placeholder="Enter city">
         <button type="submit">Search</button>
     </form>
-    
     {% if error %}
-    
     <p style="color: yellow;">{{ error }}</p>
-    
-    {% endif %}
+{% endif %}
+
 
     {% if weather %}
+     <img src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png">
+    <div class="temp">{{ weather.temp }}°C</div>
+    <div class="city">{{ weather.city }}</div>
         <div class="icon">☁️</div>
         <div class="temp">{{ weather.temp }}°C</div>
         <div class="city">{{ weather.city }}</div>
@@ -109,10 +109,6 @@
             <div>💧 {{ weather.humidity }}%</div>
             <div>🌬 {{ weather.wind }} m/s</div>
         </div>
-    {% endif %}
-
-    {% if error %}
-        <div style="margin-top: 15px; color: #ffdddd; font-size: 14px;">{{ error }}</div>
     {% endif %}
 
 </div>
